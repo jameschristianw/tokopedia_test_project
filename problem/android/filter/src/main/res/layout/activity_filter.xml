@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".view.FilterActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lokasi"
+        />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/cpLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+<!--Rencana awal harusnya pake RangeSlider, tapi karena ga ada (dan ga boleh tambah libary)-->
+<!--Jadinya cuma pakai Slider. Tapi pas Slider, label-nya ga bisa diilangin, jdnya pake Seekbar terakhir2-->
+<!-- Code-nya sementara saya comment mana tau mau berubah ke Slider lagi. Maaf kalau kelupaan dihapus    -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga Minimal"
+        />
+
+    <TextView
+        android:id="@+id/tvMinPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1000000"
+        />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seekbarMinPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--    <com.google.android.material.slider.Slider-->
+<!--        android:id="@+id/sliderMinPrice"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        />-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga Maksimal"
+        />
+
+    <TextView
+        android:id="@+id/tvMaxPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="40000000"
+        />
+
+    <androidx.appcompat.widget.AppCompatSeekBar
+        android:id="@+id/seekbarMaxPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+<!--    <com.google.android.material.slider.Slider-->
+<!--        android:id="@+id/sliderMaxPrice"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <Button
+        android:id="@+id/btnFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filter"
+        />
+
+</LinearLayout>
