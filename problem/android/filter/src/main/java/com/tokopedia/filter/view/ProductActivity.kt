@@ -4,12 +4,14 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.tokopedia.filter.R
+import com.tokopedia.filter.adapter.ProductAdapter
+import com.tokopedia.filter.model.ProductData
+import com.tokopedia.filter.model.ShopData
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
