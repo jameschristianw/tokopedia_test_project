@@ -2,4 +2,5 @@
 <resources>
     <string name="filter">Filter</string>
     <string name="product_item_image_desc">Product Image</string>
+    <string name="reset_filter">Reset Filter</string>
 </resources>

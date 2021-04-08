@@ -1,32 +1,30 @@
 package com.tokopedia.filter.view
 
-import android.content.Context
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
 import com.tokopedia.filter.R
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
-import java.util.logging.Filter
 
 class ProductActivity : AppCompatActivity() {
-    var products = ArrayList<ProductData>()
     lateinit var rvProduct: RecyclerView
     lateinit var productAdapter: ProductAdapter
     lateinit var fabFilter: FloatingActionButton
+
+    var products = ArrayList<ProductData>()
     var minMaxPrice = IntArray(2) { 0 }
     var shopLocationCount = hashMapOf<String, Int?>()
-    var locationCount = 0
+
+    val REQUEST_FILTER:Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,21 +42,51 @@ class ProductActivity : AppCompatActivity() {
         fabFilter.setOnClickListener{ filterPage() }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK){
+            val selectedLocations = data?.getStringArrayExtra("SELECTED_LOCATIONS")
+            val minPrice = data?.getIntExtra("MIN_PRICE", 0)
+            val maxPrice = data?.getIntExtra("MAX_PRICE", 0)
+
+            if (maxPrice != null) {
+                if (minPrice != null) {
+                    filterProduct(minPrice, maxPrice, selectedLocations)
+                }
+            }
+        } else if (resultCode == Activity.RESULT_CANCELED) {
+            products.clear()
+            processData()
+            productAdapter = ProductAdapter(products)
+            rvProduct.adapter = productAdapter
+        }
+    }
+
+    private fun filterProduct(minPrice:Int, maxPrice:Int, cities: Array<String>?){
+        products = if (cities != null && !cities.isEmpty()) {
+            products.filter { product -> cities.contains(product.shopData.city) &&  product.priceInt!! in (minPrice + 1) until maxPrice + 1} as ArrayList<ProductData>
+        } else {
+            products.filter { it.priceInt!! in (minPrice + 1) until maxPrice + 1 } as ArrayList<ProductData>
+        }
+        productAdapter = ProductAdapter(products)
+        rvProduct.adapter = productAdapter
+    }
+
     private fun filterPage() {
-        Log.d("ProductActivity", "Test Filter")
-        var intent = Intent(this, FilterActivity::class.java)
+        val intent = Intent(this, FilterActivity::class.java)
         intent.putExtra("PRICES", minMaxPrice)
         intent.putExtra("LOCATIONS", shopLocationCount)
 
         Log.d("ProductActivity", "${minMaxPrice[0]} ${minMaxPrice[1]}")
         Log.d("ProductActivity", shopLocationCount.toString())
 
-        startActivity(intent)
+        startActivityForResult(intent, REQUEST_FILTER)
     }
 
     private fun getJsonDataFromAsset(): String {
         val stringBuffer = StringBuffer()
-        var bufferReader: BufferedReader
+        val bufferReader: BufferedReader
         try{
             bufferReader = BufferedReader(InputStreamReader(resources.openRawResource(R.raw.products)))
             bufferReader.readLines().map { line -> stringBuffer.append(line) }
