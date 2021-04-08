@@ -2,11 +2,11 @@
     package="com.tokopedia.maps" >
 
     <application>
-        <activity android:name=".MapsActivity"
+        <activity android:name=".view.MapsActivity"
             android:label="@string/maps">
         </activity>
 
-        <activity android:name=".MapsCaseActivity"
+        <activity android:name=".view.MapsCaseActivity"
             android:label="@string/maps">
         </activity>
     </application>

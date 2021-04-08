@@ -8,7 +8,7 @@ import com.bumptech.glide.BuildConfig
 import com.tokopedia.climbingstairs.ClimbingStairsActivity
 import com.tokopedia.core.GlobalConfig
 import com.tokopedia.filter.view.FilterCaseActivity
-import com.tokopedia.maps.MapsCaseActivity
+import com.tokopedia.maps.view.MapsCaseActivity
 import com.tokopedia.minimumpathsum.MinimumPathSumActivity
 import com.tokopedia.oilreservoir.OilReservoirActivity
 import kotlinx.android.synthetic.main.activity_main.*

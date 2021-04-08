@@ -1,4 +1,4 @@
-package com.tokopedia.filter.view
+package com.tokopedia.filter.adapter
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -15,6 +15,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tokopedia.filter.R
+import com.tokopedia.filter.model.ProductData
 import java.io.InputStream
 import java.net.URL
 import java.text.DecimalFormat

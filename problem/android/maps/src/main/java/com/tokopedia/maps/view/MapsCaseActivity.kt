@@ -1,4 +1,4 @@
-package com.tokopedia.maps
+package com.tokopedia.maps.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.view.View
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatActivity
 import com.tokopedia.core.loadFile
+import com.tokopedia.maps.R
 
 class MapsCaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
