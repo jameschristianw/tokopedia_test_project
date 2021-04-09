@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply from: "$rootProject.projectDir/module.gradle"
 
 android {
+    signingConfigs {
+        'release-signed' {
+            storeFile file('/Users/jameschristianw/Projects/tokopedia_test_project/TokoTestKeyStore')
+            storePassword 'ttKeyStore'
+            keyAlias 'TokoTestAlias'
+            keyPassword 'ttAlias'
+        }
+    }
     compileSdkVersion 29
     defaultConfig {
         applicationId "com.tokopedia.testproject"
@@ -15,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.'release-signed'
         }
     }
 
