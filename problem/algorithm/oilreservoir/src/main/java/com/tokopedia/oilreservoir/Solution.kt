@@ -5,7 +5,6 @@ package com.tokopedia.oilreservoir
  */
 object Solution {
     fun collectOil(height: IntArray): Int? {
-        // TODO, return the amount of oil blocks that could be collected
         val maxHeight: Int? = height.max()
         var isInsideWall:Boolean = false
         var currentCount = 0
