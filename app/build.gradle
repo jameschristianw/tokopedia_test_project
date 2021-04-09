@@ -4,7 +4,7 @@ apply from: "$rootProject.projectDir/module.gradle"
 android {
     signingConfigs {
         'release-signed' {
-            storeFile file('/Users/jameschristianw/Projects/tokopedia_test_project/TokoTestKeyStore')
+            storeFile file("$rootProject.projectDir/TokoTestKeyStore")
             storePassword 'ttKeyStore'
             keyAlias 'TokoTestAlias'
             keyPassword 'ttAlias'
