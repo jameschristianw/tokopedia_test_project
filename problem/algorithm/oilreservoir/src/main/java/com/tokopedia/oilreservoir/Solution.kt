@@ -7,6 +7,7 @@ object Solution {
     fun collectOil(height: IntArray): Int {
         // TODO, return the amount of oil blocks that could be collected
         // below is stub
+        // why
         return 0
     }
 }
