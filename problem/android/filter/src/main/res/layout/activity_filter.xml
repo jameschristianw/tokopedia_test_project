@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lokasi"
+        android:text="@string/filter_lokasi"
         />
 
     <com.google.android.material.chip.ChipGroup
@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Harga Minimal"
+        android:text="@string/filter_harga_minimal"
         />
 
     <TextView
@@ -50,7 +50,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Harga Maksimal"
+        android:text="@string/filter_harga_maksimal"
         />
 
     <TextView
